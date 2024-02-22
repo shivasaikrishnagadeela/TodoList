@@ -9,7 +9,10 @@ function Todo() {
 
   useEffect(() => {
     fetchTodos();
+    const interval = setInterval(fetchTodos, 10);
+    return () => clearInterval(interval);
   }, []);
+
 
   const fetchTodos = () => {
     axios.get('http://localhost:3334/get')
